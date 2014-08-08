@@ -1,0 +1,171 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Example Application</title>
+  <!-- <meta http-equiv="refresh" content="5; URL=http://sde.opentext.com:8007/bpmeApp/index.html"> -->
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+
+  <script src="lib/jquery-2.1.1.min.js"></script>
+  <script src="lib/underscore-min.js"></script>
+  <script src="lib/backbone-min.js"></script>
+  <script src="lib/webtoolkit.base64.js"></script>
+  <script src='lib/bootstrap.js'></script>
+  <script src="lib/backbone.marionette.min.js"></script>
+  <script src='scripts/helpers.js'></script>
+  <script src='scripts/router.js'></script>
+
+  <!-- FOR TESTING -->
+  <script src="example_feed.js"></script>
+
+
+  <!-- STYLESHEETS  -->
+  <link rel="stylesheet" type="text/css" href="styles/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="styles/bootstrap-theme.min.css">
+  <link rel="stylesheet" type="text/css" href="styles/styles.css">
+</head>
+
+  <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Brand</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Link</a></li>
+          <li><a href="#">Link</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+              <li class="divider"></li>
+              <li><a href="#">One more separated link</a></li>
+            </ul>
+          </li>
+        </ul>
+        <form class="navbar-form navbar-left" role="search">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search">
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#">Link</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div>
+  </nav>
+<body>
+  
+<!-- BODY -->
+
+
+  <div class="container">    <!-- Example Comment -->
+    <input type="text" class="form-control" placeholder="I want announce..."><br />
+    <div id="feed-container"></div>
+  </div>
+</body>
+
+
+<script type="text/template" id="comment-template">
+  <div class="media">
+    <a class="pull-left" href="#">
+      <img class="media-object" height="50" width="50" src=<%= createdBy.imgSrc%> />
+    </a>
+    <div class="media-body">
+      <h4 class="media-heading">
+        <%= createdBy.name %>
+        <span class="feed-date pull-right"><%= createdAt %></span>
+      </h4>
+      <%= content %>
+    </div>
+  </div>
+</script>
+
+
+<script type="text/template" id="activity-template">
+  <div class="media">
+    <a class="pull-left" href="#">
+      <img class="media-object" height="75" width="75" src=<%= createdBy.imgSrc %>>
+    </a>
+    <div class="media-body">
+      <h4 class="media-heading">
+        <%= createdBy.name %>
+        <span class="feed-date pull-right feed-date"><%= createdAt %></span>
+      </h4>
+      <%= content %>
+      <!-- OPTIONAL COMMENTS -->
+      <div class="activity-comments-container"></div>
+      <table class="table">
+        <tr>
+          <td><a>Like</a></td>
+          <td><a class="edit-comment">Comment</a></td>
+          <td><a>Delete</a></td>
+        </tr>
+      </table>
+        
+    </div>
+    </div>
+  </div>
+</script>
+
+<!--   <div class="media">
+    <a class="pull-left" href="#">
+      <img class="media-object" height="75" width="75" src=<%= createdBy.imgSrc %>>
+    </a>
+    <div class="media-body">
+      <h4 class="media-heading">
+        <%= createdBy.name %>
+        <center>
+        <img src="/otts/gm/document-1.9.303/12305_12567_Yosemite_Valley_md_1.jpg">
+      </center>
+        <span class="feed-date pull-right feed-date"><%= createdAt %></span>
+      </h4>
+      <%= description %>
+ 
+      <div class="activity-comments-container"></div>
+      <table class="table">
+        <tr>
+          <td><a>Like</a></td>
+          <td><a class="edit-comment">Comment</a></td>
+          <td><a>Delete</a></td>
+        </tr>
+      </table>
+        
+    </div>
+    </div>
+  </div>
+ -->
+<!-- SRC -->
+<script src="main.js"></script>
+<script src="src/Filters.js"></script>
+<script src="src/Models.js"></script>
+<script src="src/Collections.js"></script>
+<script src="src/ItemViews.js"></script>
+<script src="src/CollectionViews.js"></script>

@@ -1,0 +1,34 @@
+.row {
+  /*border: 1px black dotted;*/
+  padding-top: 20px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+#feed-container {
+  padding: 50px;
+  border: 1px black solid;
+}
+.media {
+  border: 1px black dotted;
+  padding: 10px;
+}
+.activity-comments-container {
+  padding-top:50px;
+}
+
+.feed-date {
+  color: gray;
+  font-size: .50em;
+}
+#feed-container {
+  background-color: #A0CAD8;
+}
+#feed-container > *{
+  background-color: white;
+}
+
+
+.comment-view {
+	margin-left: 40px;
+}
