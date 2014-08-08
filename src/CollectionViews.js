@@ -44,8 +44,31 @@
       // newComment.save(attrs);
     }
 	});
-	BackboneApp.CollectionViews.FeedView = Backbone.Marionette.CollectionView.extend({
-		childView: BackboneApp.CollectionViews.ActivityView
+	BackboneApp.CollectionViews.
+
+  FeedView = Backbone.Marionette.CollectionView.extend({
+		childView: BackboneApp.CollectionViews.ActivityView,
+    events: {
+      "keyup #create-post-input" : "createActivity"
+    },
+    createActivity: function(event) {
+      if(event.keyCode==13) {
+        var mockCreator = {
+          id:     "social.user.1.109.301",
+          name:     "otag",
+          imgSrc:   "/otts/images/UserProfile.gif"
+        }
+        var activitymodel = new BackboneApp.Models.Activity({
+          id: "social.post.1.102.1",
+          createdBy: mockCreator,
+          content:  $("#create-post-input").val(),
+        });
+        console.log(this.collection);
+        this.collection.push(activitymodel);
+        // var template = _.template($("#activity-template").html(), activitymodel.toJSON() );
+        // this.$el.prepend(template);
+      }
+    }
 	});
 
 })(BackboneApp, _, HELPERS, $);

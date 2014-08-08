@@ -306,11 +306,11 @@ describe("An Activity", function() {
     });
     it('should have a name field', function() {
       expect(createdBy.name).toBeDefined();
-      expect(createdBy.name).toEqual('Janet JANET');
+      expect(createdBy.name).toEqual('janet');
     });
-    it('should have and icon field', function() {
-      expect(createdBy.icon).toBeDefined();
-      expect(createdBy.icon).toEqual("\/otts\/gm\/document-1.9.106\/janet_activityfeed_40x47.jpg");
+    it('should have an imgSrc field', function() {
+      expect(createdBy.imgSrc).toBeDefined();
+      expect(createdBy.imgSrc).toEqual("\/otts\/gm\/document-1.9.106\/janet_activityfeed_40x47.jpg");
     });
   });
 

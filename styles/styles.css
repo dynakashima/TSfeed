@@ -4,19 +4,23 @@
   margin-top: 5px;
   margin-bottom: 5px;
 }
-
+body {
+  background-color: #ddd;
+}
+.site-container {
+  margin-top: 20px;
+}
 #feed-container {
   padding: 50px;
-  border: 1px black solid;
+  border: 1px darkgray solid;
 }
 .media {
-  border: 1px black dotted;
+  border: 1px gray dotted;
   padding: 10px;
 }
 .activity-comments-container {
   padding-top:50px;
 }
-
 .feed-date {
   color: gray;
   font-size: .50em;
@@ -24,11 +28,7 @@
 #feed-container {
   background-color: #A0CAD8;
 }
-#feed-container > *{
+#feed-container > * {
   background-color: white;
 }
 
-
-.comment-view {
-	margin-left: 40px;
-}

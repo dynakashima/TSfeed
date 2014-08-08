@@ -18,7 +18,14 @@ window.BackboneApp = {
 			});
 		};
 
+
 		var createPostsView = function(activities, el) {
+			return new BackboneApp.CollectionViews.FeedView({
+				el: el,
+				collection: activities
+			});
+		};
+		var createActivitiesCollection = function(activities) {
 			var posts = _.chain(activities)
 				.filter(function(activity) {
 					var isCommunity = _.contains(activity.object.id.split('.'), "SocialGroup");
@@ -29,31 +36,49 @@ window.BackboneApp = {
 			  	return new BackboneApp.Models.Activity(
 			  			BackboneApp.Filters.filterPost(activity)
 			  	);
-			  })
-			  .value();
-			return new BackboneApp.CollectionViews.FeedView({
-				el: el,
-				collection: new BackboneApp.Collections.Feed(posts)
-			});
-		};
-
+			  }).value();
+			  return new BackboneApp.Collections.Feed(posts);
+		}
 		var createViews = function(data) {
-			var act_with_com = _.find(data, function(activity){return activity.object.comments;})
-			
-			var a = createPostsView(data, "#feed-container");
-			return a.render();
+			var model = createActivitiesCollection(data);
+			var view = createPostsView(model, "#feed-container");
+			view.listenTo(view.collection, 'reset', view.render);
+			return view.render();
 		};
+		var getCurrentUser = function(Q, $, userid) {
+			var deferred = Q.defer();
+			$.ajax({
+		    url:'/otts/xapi/v2/resources/' + userid + '?method=get',
+		    type: 'POST',
+		    data: JSON.stringify({ 
+					"@cls": "query",
+					"fields": ["icons"] 
+				}),
+		    contentType: 'application/json',
+		    success: function(user) {deferred.resolve(user)},
+		    error: function() {
+		    	deferred.reject(new Error("UNable to retrieve the current user"));
+		    }
+		  });
+		  return deferred.promise;
+		};
+		
+		var userPromise = getCurrentUser(Q, $, "@me");
 
+		userPromise.then(function(User){
+			$.ajax({
+		    url: '/otts/xapi/v2/resources/social.site.1.104.105?method=get',
+		    type: 'POST',
+		    data: JSON.stringify(post_JSON),
+		    contentType: 'application/json',
+		    success: function(data) {  createViews(data.site_feed);},
+		    error: function() {console.log("not able to retrieve feed data");}
+		  });
+		  // here i have a user;
+		})
 
 		// createViews(EXAMPLE_FEED.site_feed);
-	  $.ajax({
-	    url: '/otts/xapi/v2/resources/social.site.1.104.105?method=get',
-	    type: 'POST',
-	    data: JSON.stringify(post_JSON),
-	    contentType: 'application/json',
-	    success: function(data) {  createViews(data.site_feed);},
-	    error: function() {console.log("not able to retrieve feed data");}
-	  });
+
 	  // $.ajax({
 	  //   url: '/otts/xapi/v2/resources/social.status.1.110.101/comments',
 	  //   type: 'POST',

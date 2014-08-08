@@ -32,7 +32,6 @@
 		var model_image_src = '/otts' + icon_src.value;
 
 		var model_id =  activity.object.id;
-		console.log(model_id);
 
 		var temp_createdBy = {
 			id: activity.actor.id,

@@ -139,9 +139,9 @@ describe("Comment objects :: ", function() {
         expect(createdBy.name).toBeDefined();
         expect(createdBy.name).toEqual('otag');
       });
-      it('should have and icon field', function() {
-        expect(createdBy.icon).toBeDefined();
-        expect(createdBy.icon).toEqual("\/otts\/images\/UserProfile.gif");
+      it('should have and imgSrc field', function() {
+        expect(createdBy.imgSrc).toBeDefined();
+        expect(createdBy.imgSrc).toEqual("\/otts\/images\/UserProfile.gif");
       })
     });
 
