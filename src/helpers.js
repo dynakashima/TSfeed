@@ -1,4 +1,3 @@
-// add format to String class
 if (!String.prototype.format) {
   String.prototype.format = function() {
     var args = arguments;

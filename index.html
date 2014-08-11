@@ -16,8 +16,6 @@
   <script src='lib/bootstrap.js'></script>
   <script src="lib/backbone.marionette.min.js"></script>
   <script src="lib/q.js"></script>
-  <script src='scripts/helpers.js'></script>
-  <script src='scripts/router.js'></script>
 
   <!-- FOR TESTING -->
   <script src="example_feed.js"></script>
@@ -33,19 +31,14 @@
   
 <!-- BODY -->
 
-
-  <div class="container site-container">    <!-- Example Comment -->
-    
+  <div class="container site-container">
 
     <div id="feed-container">
-          <input
-      id="create-post-input"
-      type="text" 
-      class="form-control"
-      placeholder="I want announce..."
-    ><br />
+      <input id="create-post-input" type="text" class="form-control" placeholder="I want to announce..." required><br />
 
+      <div id="activity-list"></div>
     </div>
+    
   </div>
 </body>
 
@@ -119,6 +112,8 @@
   </div>
  -->
 <!-- SRC -->
+<script src='src/helpers.js'></script>
+<script src='src/Storage.js'></script>
 <script src="main.js"></script>
 <script src="src/Filters.js"></script>
 <script src="src/Models.js"></script>

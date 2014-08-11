@@ -14,7 +14,8 @@
 	});
 
 	BackboneApp.Views.ActivityView = Backbone.Marionette.ItemView.extend({
-		template: "#activity-template"
+		template: "#activity-template",
+
 	});
 	BackboneApp.CollectionViews.ActivityView = Backbone.Marionette.CompositeView.extend({
 		template: "#activity-template",
@@ -23,51 +24,51 @@
 		initialize: function() {
 			this.collection = this.model.get('comments');
 		},
+
+    onBeforeRender: function() {
+    },
 		events: {
       "click a.edit-comment": "showComment",
       "click a.submit-comment": "createComment",
     },
     showComment: function()  {
       this.$el.find(".edit-comment-view").toggle();
-    },
-    createComment: function() {
-      // var Comment = BackboneApp.Models.Comment;
-      // var url = 'otts/xapi/v2/resouces/{0}/comments'.format(this.model.get('id'));
-      // var content = $el.find('.create-commment-input').text();
-      // var newComment = new Comment({
-      //   url: url,
-      // });
-      // var attrs = {
-      //   "@cls": "comment",
-      //   "content": newComment.get('content')
-      // };
-      // newComment.save(attrs);
     }
 	});
-	BackboneApp.CollectionViews.
 
-  FeedView = Backbone.Marionette.CollectionView.extend({
-		childView: BackboneApp.CollectionViews.ActivityView,
+  BackboneApp.CollectionViews.FeedView = Backbone.Marionette.CompositeView.extend({
+		template: "#feed-container",
+    childView: BackboneApp.CollectionViews.ActivityView,
+    childViewContainer: "#activity-list",
     events: {
       "keyup #create-post-input" : "createActivity"
     },
     createActivity: function(event) {
-      if(event.keyCode==13) {
-        var mockCreator = {
-          id:     "social.user.1.109.301",
-          name:     "otag",
-          imgSrc:   "/otts/images/UserProfile.gif"
-        }
+      // if enter is pressed
+      var inputContent = this.$el.find("#create-post-input").val();
+      if(event.keyCode==13 && inputContent) {
+        var that = this;
         var activitymodel = new BackboneApp.Models.Activity({
-          id: "social.post.1.102.1",
-          createdBy: mockCreator,
-          content:  $("#create-post-input").val(),
+          createdBy: Storage.get('currentUser'),
+          content: inputContent,
+          comments: new BackboneApp.Collections.Comments([])
         });
-        console.log(this.collection);
-        this.collection.push(activitymodel);
-        // var template = _.template($("#activity-template").html(), activitymodel.toJSON() );
-        // this.$el.prepend(template);
+
+        activitymodel.saveDN().then(function(response) {
+          that.addActivityView(activitymodel, response.id);
+        });
       }
+    },
+    addActivityView: function(actModel, responseID) {
+      var actview = new BackboneApp.CollectionViews.ActivityView({
+        model: actModel
+      });
+      actview.render();
+      this.$el.find(this.childViewContainer).prepend(actview.el);
+      this.$el.find("#create-post-input").val('');
+      // console.log(this.collection);
+      this.collection.push(actModel);
+      return actview;
     }
 	});
 
