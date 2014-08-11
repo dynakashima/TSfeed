@@ -8,11 +8,11 @@
 		var model_created_at = HELPERS.timeConverter(commentObj.created_date);
 		var user = commentObj.created_by;
 
-		var model_created_by = {
+		var model_created_by = new BackboneApp.Models.User({
 			id: user.id,
 			name: user.name,
 			imgSrc: '/otts' + user.icons[0].value
-		};
+		});
 		return {
 			id: model_id,
 			content: model_content,
@@ -26,18 +26,14 @@
 		var icon_src = _.find(activity.actor.icons, function(icon) {
 			return icon.type === 'icon';
 		});
-
 		var model_date = HELPERS.timeConverter(activity.published);
-		
 		var model_image_src = '/otts' + icon_src.value;
-
 		var model_id =  activity.object.id;
-
-		var temp_createdBy = {
+		var temp_createdBy = new BackboneApp.Models.User({
 			id: activity.actor.id,
 			name: activity.actor.name,
 			imgSrc: model_image_src
-		};
+		}).toJSON();
 
 		var comments = _.map(activity.object.comments, 
 			function(comment) {

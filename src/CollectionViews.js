@@ -24,8 +24,15 @@
 		initialize: function() {
 			this.collection = this.model.get('comments');
 		},
-
-    onBeforeRender: function() {
+    creatorLoggedIn: function() {
+      return this.model.get('createdBy').id === Storage.get('currentUser').id;
+    },
+    onRender: function() {
+      // if you are not the creator than you cannot have the option
+      // to delete activity
+      if( !this.creatorLoggedIn() ) {
+        this.$el.find('.delete-activity').remove();
+      }
     },
 		events: {
       "click a.edit-comment": "showComment",
