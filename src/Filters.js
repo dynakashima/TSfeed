@@ -12,7 +12,7 @@
 			id: user.id,
 			name: user.name,
 			imgSrc: '/otts' + user.icons[0].value
-		});
+		}).toJSON();
 		return {
 			id: model_id,
 			content: model_content,

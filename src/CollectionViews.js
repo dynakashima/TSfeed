@@ -1,13 +1,9 @@
 (function(BackboneApp, _, HELPERS, $) {
 	BackboneApp.CompositeViews = BackboneApp.CompositeViews || {};
+  
   BackboneApp.Views.CommentView = Backbone.Marionette.ItemView.extend({
     template: "#comment-template",
-    // render: function() {
-    //   var template = _.template($("#comment-template").html(), this.model.toJSON());
-    //   this.$el.html(template);
-    // }
   });
-
 
 	BackboneApp.CollectionViews.CommentsView = Backbone.Marionette.CollectionView.extend({
 		childView: BackboneApp.Views.CommentView
@@ -15,31 +11,45 @@
 
 	BackboneApp.Views.ActivityView = Backbone.Marionette.ItemView.extend({
 		template: "#activity-template",
-
 	});
+
 	BackboneApp.CollectionViews.ActivityView = Backbone.Marionette.CompositeView.extend({
-		template: "#activity-template",
-		childView: BackboneApp.Views.CommentView,
-		childViewContainer: ".activity-comments-container",
-		initialize: function() {
-			this.collection = this.model.get('comments');
-		},
-    creatorLoggedIn: function() {
-      return this.model.get('createdBy').id === Storage.get('currentUser').id;
+    template: "#activity-template",
+
+    childView: BackboneApp.Views.CommentView,
+
+    childViewContainer: ".activity-comments-container",
+
+    initialize: function() {
+      this.collection = this.model.get('comments');
     },
+    creatorLoggedIn: function() {
+      var creator = this.model.get('createdBy').id;
+      var current = Storage.get('currentUser').id;
+      return current === creator;
+    },
+
     onRender: function() {
-      // if you are not the creator than you cannot have the option
-      // to delete activity
+      // remove delete function if not loggedIn
       if( !this.creatorLoggedIn() ) {
         this.$el.find('.delete-activity').remove();
       }
     },
-		events: {
-      "click a.edit-comment": "showComment",
-      "click a.submit-comment": "createComment",
+
+    events: {
+      "click a.show-comment": "showComment",
+      "click a.delete-activity": "destroy",
+    },
+    destroy: function() {
+      var that = this;
+      this.model.deleteDN().then(function(response) {
+        // that.model.destroy();
+        console.log("here i am")
+        // window.location.reload();
+      });
     },
     showComment: function()  {
-      this.$el.find(".edit-comment-view").toggle();
+      this.$el.find(".show-comment-view").toggle();
     }
 	});
 
@@ -50,33 +60,32 @@
     events: {
       "keyup #create-post-input" : "createActivity"
     },
+
     createActivity: function(event) {
-      // if enter is pressed
-      var inputContent = this.$el.find("#create-post-input").val();
-      if(event.keyCode==13 && inputContent) {
+      var ENTER_KEY = 13;
+      var $input = this.$el.find("#create-post-input");
+      var content = $input.val().trim();
+
+      if(event.keyCode === ENTER_KEY  && content) {
+        
+        $input.val('');   // emptyinputs
+
         var that = this;
+
         var activitymodel = new BackboneApp.Models.Activity({
           createdBy: Storage.get('currentUser'),
-          content: inputContent,
+          content: content,
           comments: new BackboneApp.Collections.Comments([])
         });
 
         activitymodel.saveDN().then(function(response) {
-          that.addActivityView(activitymodel, response.id);
+          that.collection.add(activitymodel, {at:0});
+        })
+        .catch(function(error) {
+          console.log(error);
         });
       }
     },
-    addActivityView: function(actModel, responseID) {
-      var actview = new BackboneApp.CollectionViews.ActivityView({
-        model: actModel
-      });
-      actview.render();
-      this.$el.find(this.childViewContainer).prepend(actview.el);
-      this.$el.find("#create-post-input").val('');
-      // console.log(this.collection);
-      this.collection.push(actModel);
-      return actview;
-    }
 	});
 
 })(BackboneApp, _, HELPERS, $);

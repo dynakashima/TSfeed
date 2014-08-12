@@ -9,7 +9,7 @@ var EXAMPLE_FEED = {
     },
     {
       "key": "query",
-      "value": "{\"@cls\":\"query\",\"fields\":[\"metadata\",\"@all\"],\"links\":[{\"@cls\":\"query\",\"link\":\"site_feed\",\"fields\":[\"verb\",\"priority\",\"published\"],\"links\":[{\"@cls\":\"query\",\"link\":\"actor\",\"fields\":[\"name\",\"first_name\",\"last_name\",\"icons\"]},{\"@cls\":\"query\",\"link\":\"object\",\"fields\":[\"name\"],\"links\":[{\"@cls\":\"query\",\"link\":\"ratings\",\"fields\":[\"@all\"]},{\"@cls\":\"query\",\"link\":\"comments\",\"fields\":[\"id\",\"icons\",\"content\",\"created_date\"],\"links\":[{\"@cls\":\"query\",\"link\":\"target\",\"fields\":[\"@all\"]},{\"@cls\":\"query\",\"link\":\"context\",\"fields\":[\"id\",\"icons\",\"content\"]},{\"@cls\":\"query\",\"link\":\"created_by\",\"fields\":[\"name\",\"icons\",\"emails\"]}]},{\"@cls\":\"query\",\"link\":\"created_by\"},{\"@cls\":\"query\",\"link\":\"owner\"}]},{\"@cls\":\"query\",\"link\":\"target\",\"fields\":[\"name\"],\"links\":[{\"@cls\":\"query\",\"link\":\"created_by\"},{\"@cls\":\"query\",\"link\":\"owner\"},{\"@cls\":\"query\",\"link\":\"ratings\"},{\"@cls\":\"query\",\"link\":\"comments\"}]},{\"@cls\":\"query\",\"link\":\"site\",\"fields\":[\"name\"]}],\"sort\":\"DESCENDING\",\"sort_by\":\"published\",\"next_page\":\"0\",\"prev_page\":\"1407779331620\",\"is_final_page\":true}]}"
+      "value": "{\"@cls\":\"query\",\"fields\":[\"metadata\",\"@all\"],\"links\":[{\"@cls\":\"query\",\"link\":\"site_feed\",\"fields\":[\"verb\",\"priority\",\"published\"],\"links\":[{\"@cls\":\"query\",\"link\":\"actor\",\"fields\":[\"name\",\"first_name\",\"last_name\",\"icons\"]},{\"@cls\":\"query\",\"link\":\"object\",\"fields\":[\"name\"],\"links\":[{\"@cls\":\"query\",\"link\":\"ratings\",\"fields\":[\"@all\"]},{\"@cls\":\"query\",\"link\":\"comments\",\"fields\":[\"id\",\"icons\",\"content\",\"created_date\"],\"links\":[{\"@cls\":\"query\",\"link\":\"target\",\"fields\":[\"@all\"]},{\"@cls\":\"query\",\"link\":\"context\",\"fields\":[\"id\",\"icons\",\"content\"]},{\"@cls\":\"query\",\"link\":\"created_by\",\"fields\":[\"name\",\"icons\",\"emails\"]}]},{\"@cls\":\"query\",\"link\":\"created_by\"},{\"@cls\":\"query\",\"link\":\"owner\"}]},{\"@cls\":\"query\",\"link\":\"target\",\"fields\":[\"name\"],\"links\":[{\"@cls\":\"query\",\"link\":\"created_by\"},{\"@cls\":\"query\",\"link\":\"owner\"},{\"@cls\":\"query\",\"link\":\"ratings\"},{\"@cls\":\"query\",\"link\":\"comments\"}]},{\"@cls\":\"query\",\"link\":\"site\",\"fields\":[\"name\"]}],\"sort\":\"DESCENDING\",\"sort_by\":\"published\",\"next_page\":\"1392073361568\",\"prev_page\":\"1407860729385\",\"is_final_page\":false}]}"
     },
     {
       "key": "user",
@@ -23,6 +23,273 @@ var EXAMPLE_FEED = {
   "id": "social.site.1.104.105",
   "name": "temposocial",
   "site_feed": [
+    {
+      "@cls": "activity",
+      "id": "social.activity.1407860724975_100891910_-1174793273",
+      "actor": {
+        "@cls": "person",
+        "id": "social.user.1.109.3",
+        "name": "janet",
+        "icons": [
+          {
+            "type": "icon",
+            "value": "\/gm\/document-1.9.106\/janet_activityfeed_40x47.jpg"
+          },
+          {
+            "type": "photo",
+            "value": "\/gm\/document-1.9.104\/janet_fullprofile_135x180.jpg"
+          },
+          {
+            "type": "thumbnail",
+            "value": "\/gm\/document-1.9.105\/janet_mini-profile_79x105.jpg"
+          }
+        ],
+        "display_name": "Janet JANET",
+        "first_name": "Janet",
+        "last_name": "JANET"
+      },
+      "verb": "commenton",
+      "object": {
+        "@cls": "comment",
+        "id": "social.comment.1.13.402",
+        "name": "comment005",
+        "owner": {
+          "@cls": "person",
+          "id": "social.user.1.109.3",
+          "name": "janet",
+          "display_name": "Janet JANET",
+          "first_name": "Janet",
+          "last_name": "JANET"
+        },
+        "content": "comment005",
+        "created_by": {
+          "@cls": "person",
+          "id": "social.user.1.109.3",
+          "name": "janet",
+          "display_name": "Janet JANET",
+          "first_name": "Janet",
+          "last_name": "JANET"
+        }
+      },
+      "record": "actId=1407860724975_100891910_-1174793273;actType=commenton.Status;actDate=1407860724975;userId=janet;domainId=default_domain;authRealm=otag;scopeId=1.104.105;groupId=null;objId=1.13.402;contextId=1.110.102;weight=5",
+      "target": {
+        "@cls": "status",
+        "id": "social.status.1.110.102",
+        "name": "status post",
+        "owner": {
+          "@cls": "person",
+          "id": "social.user.1.109.1",
+          "name": "amy",
+          "display_name": "Amy AMY",
+          "first_name": "Amy",
+          "last_name": "AMY"
+        },
+        "comments": [
+          {
+            "@cls": "comment",
+            "id": "social.comment.1.13.402",
+            "name": "comment005",
+            "content": "comment005"
+          }
+        ],
+        "content": "post002",
+        "created_by": {
+          "@cls": "person",
+          "id": "social.user.1.109.1",
+          "name": "amy",
+          "display_name": "Amy AMY",
+          "first_name": "Amy",
+          "last_name": "AMY"
+        }
+      },
+      "priority": 5,
+      "published": 1407860724975,
+      "site": {
+        "@cls": "site",
+        "id": "social.site.1.104.105",
+        "name": "temposocial"
+      }
+    },
+    {
+      "@cls": "activity",
+      "id": "social.activity.1407860623857_100891910_-1174793274",
+      "actor": {
+        "@cls": "person",
+        "id": "social.user.1.109.3",
+        "name": "janet",
+        "icons": [
+          {
+            "type": "icon",
+            "value": "\/gm\/document-1.9.106\/janet_activityfeed_40x47.jpg"
+          },
+          {
+            "type": "photo",
+            "value": "\/gm\/document-1.9.104\/janet_fullprofile_135x180.jpg"
+          },
+          {
+            "type": "thumbnail",
+            "value": "\/gm\/document-1.9.105\/janet_mini-profile_79x105.jpg"
+          }
+        ],
+        "display_name": "Janet JANET",
+        "first_name": "Janet",
+        "last_name": "JANET"
+      },
+      "verb": "commenton",
+      "object": {
+        "@cls": "comment",
+        "id": "social.comment.1.13.401",
+        "name": "comment_005",
+        "owner": {
+          "@cls": "person",
+          "id": "social.user.1.109.3",
+          "name": "janet",
+          "display_name": "Janet JANET",
+          "first_name": "Janet",
+          "last_name": "JANET"
+        },
+        "content": "comment_005",
+        "created_by": {
+          "@cls": "person",
+          "id": "social.user.1.109.3",
+          "name": "janet",
+          "display_name": "Janet JANET",
+          "first_name": "Janet",
+          "last_name": "JANET"
+        }
+      },
+      "record": "actId=1407860623857_100891910_-1174793274;actType=commenton.Status;actDate=1407860623857;userId=janet;domainId=default_domain;authRealm=otag;scopeId=1.104.105;groupId=null;objId=1.13.401;contextId=1.110.1;weight=5",
+      "target": {
+        "@cls": "status",
+        "id": "social.status.1.110.1",
+        "name": "status post",
+        "owner": {
+          "@cls": "person",
+          "id": "social.user.1.109.3",
+          "name": "janet",
+          "display_name": "Janet JANET",
+          "first_name": "Janet",
+          "last_name": "JANET"
+        },
+        "comments": [
+          {
+            "@cls": "comment",
+            "id": "social.comment.1.13.401",
+            "name": "comment_005",
+            "content": "comment_005"
+          },
+          {
+            "@cls": "comment",
+            "id": "social.comment.1.13.102",
+            "name": "comment_002",
+            "content": "comment_002"
+          },
+          {
+            "@cls": "comment",
+            "id": "social.comment.1.13.101",
+            "name": "comment_001",
+            "content": "comment_001"
+          }
+        ],
+        "content": "Welcome to TempoSocial 8.5!",
+        "created_by": {
+          "@cls": "person",
+          "id": "social.user.1.109.3",
+          "name": "janet",
+          "display_name": "Janet JANET",
+          "first_name": "Janet",
+          "last_name": "JANET"
+        }
+      },
+      "priority": 5,
+      "published": 1407860623857,
+      "site": {
+        "@cls": "site",
+        "id": "social.site.1.104.105",
+        "name": "temposocial"
+      }
+    },
+    {
+      "@cls": "activity",
+      "id": "social.activity.1407860607516_100891910_-2114440231",
+      "actor": {
+        "@cls": "person",
+        "id": "social.user.1.109.3",
+        "name": "janet",
+        "icons": [
+          {
+            "type": "icon",
+            "value": "\/gm\/document-1.9.106\/janet_activityfeed_40x47.jpg"
+          },
+          {
+            "type": "photo",
+            "value": "\/gm\/document-1.9.104\/janet_fullprofile_135x180.jpg"
+          },
+          {
+            "type": "thumbnail",
+            "value": "\/gm\/document-1.9.105\/janet_mini-profile_79x105.jpg"
+          }
+        ],
+        "display_name": "Janet JANET",
+        "first_name": "Janet",
+        "last_name": "JANET"
+      },
+      "verb": "post",
+      "object": {
+        "@cls": "status",
+        "id": "social.status.1.110.301",
+        "name": "status post",
+        "owner": {
+          "@cls": "person",
+          "id": "social.user.1.109.3",
+          "name": "janet",
+          "display_name": "Janet JANET",
+          "first_name": "Janet",
+          "last_name": "JANET"
+        },
+        "content": "post_010",
+        "created_by": {
+          "@cls": "person",
+          "id": "social.user.1.109.3",
+          "name": "janet",
+          "display_name": "Janet JANET",
+          "first_name": "Janet",
+          "last_name": "JANET"
+        }
+      },
+      "record": "actId=1407860607516_100891910_-2114440231;actType=post.Status;actDate=1407860607516;userId=janet;domainId=default_domain;authRealm=otag;scopeId=1.104.105;groupId=null;objId=1.110.301;contextId=janet;weight=5",
+      "target": {
+        "@cls": "person",
+        "id": "social.user.1.109.3",
+        "name": "janet",
+        "owner": {
+          "@cls": "person",
+          "id": "social.user.1.109.3",
+          "name": "janet",
+          "display_name": "Janet JANET",
+          "first_name": "Janet",
+          "last_name": "JANET"
+        },
+        "display_name": "Janet JANET",
+        "created_by": {
+          "@cls": "person",
+          "id": "social.user.1.109.3",
+          "name": "janet",
+          "display_name": "Janet JANET",
+          "first_name": "Janet",
+          "last_name": "JANET"
+        },
+        "first_name": "Janet",
+        "last_name": "JANET"
+      },
+      "priority": 5,
+      "published": 1407860607516,
+      "site": {
+        "@cls": "site",
+        "id": "social.site.1.104.105",
+        "name": "temposocial"
+      }
+    },
     {
       "@cls": "activity",
       "id": "social.activity.1407446492959_3421387_-1174794233",
@@ -427,6 +694,92 @@ var EXAMPLE_FEED = {
           "first_name": "Amy",
           "last_name": "AMY"
         },
+        "comments": [
+          {
+            "@cls": "comment",
+            "id": "social.comment.1.13.402",
+            "name": "comment005",
+            "icons": [
+              {
+                "type": "icon",
+                "value": "\/images\/Comment.gif"
+              },
+              {
+                "type": "photo",
+                "value": "\/images\/Comment-large.gif"
+              }
+            ],
+            "content": "comment005",
+            "target": {
+              "@cls": "status",
+              "id": "social.status.1.110.102",
+              "name": "status post",
+              "icons": [
+                {
+                  "type": "icon",
+                  "value": "\/images\/Status.gif"
+                },
+                {
+                  "type": "photo",
+                  "value": "\/images\/Status-large.gif"
+                }
+              ],
+              "content": "post002",
+              "subject": "status post",
+              "created_date": 1407359625528,
+              "modified_date": 1407860724956,
+              "is_owner": false,
+              "is_under_moderation": false,
+              "is_subscribed": false
+            },
+            "context": {
+              "@cls": "status",
+              "id": "social.status.1.110.102",
+              "name": "status post",
+              "icons": [
+                {
+                  "type": "icon",
+                  "value": "\/images\/Status.gif"
+                },
+                {
+                  "type": "photo",
+                  "value": "\/images\/Status-large.gif"
+                }
+              ],
+              "content": "post002"
+            },
+            "created_date": 1407860724954,
+            "created_by": {
+              "@cls": "person",
+              "id": "social.user.1.109.3",
+              "name": "janet",
+              "icons": [
+                {
+                  "type": "icon",
+                  "value": "\/gm\/document-1.9.106\/janet_activityfeed_40x47.jpg"
+                },
+                {
+                  "type": "photo",
+                  "value": "\/gm\/document-1.9.104\/janet_fullprofile_135x180.jpg"
+                },
+                {
+                  "type": "thumbnail",
+                  "value": "\/gm\/document-1.9.105\/janet_mini-profile_79x105.jpg"
+                }
+              ],
+              "emails": [
+                {
+                  "type": "main",
+                  "value": "janet@sde.opentext.com",
+                  "primary": true
+                }
+              ],
+              "display_name": "Janet JANET",
+              "first_name": "Janet",
+              "last_name": "JANET"
+            }
+          }
+        ],
         "content": "post002",
         "created_by": {
           "@cls": "person",
@@ -860,6 +1213,12 @@ var EXAMPLE_FEED = {
         "comments": [
           {
             "@cls": "comment",
+            "id": "social.comment.1.13.401",
+            "name": "comment_005",
+            "content": "comment_005"
+          },
+          {
+            "@cls": "comment",
             "id": "social.comment.1.13.102",
             "name": "comment_002",
             "content": "comment_002"
@@ -944,6 +1303,12 @@ var EXAMPLE_FEED = {
           "last_name": "JANET"
         },
         "comments": [
+          {
+            "@cls": "comment",
+            "id": "social.comment.1.13.401",
+            "name": "comment_005",
+            "content": "comment_005"
+          },
           {
             "@cls": "comment",
             "id": "social.comment.1.13.102",
@@ -1389,261 +1754,6 @@ var EXAMPLE_FEED = {
       },
       "priority": 5,
       "published": 1392073378805,
-      "site": {
-        "@cls": "site",
-        "id": "social.site.1.104.105",
-        "name": "temposocial"
-      }
-    },
-    {
-      "@cls": "activity",
-      "id": "social.activity.1392073361568_100891910_1901708246",
-      "actor": {
-        "@cls": "person",
-        "id": "social.user.1.109.3",
-        "name": "janet",
-        "icons": [
-          {
-            "type": "icon",
-            "value": "\/gm\/document-1.9.106\/janet_activityfeed_40x47.jpg"
-          },
-          {
-            "type": "photo",
-            "value": "\/gm\/document-1.9.104\/janet_fullprofile_135x180.jpg"
-          },
-          {
-            "type": "thumbnail",
-            "value": "\/gm\/document-1.9.105\/janet_mini-profile_79x105.jpg"
-          }
-        ],
-        "display_name": "Janet JANET",
-        "first_name": "Janet",
-        "last_name": "JANET"
-      },
-      "verb": "post",
-      "object": {
-        "@cls": "status",
-        "id": "social.status.1.110.1",
-        "name": "status post",
-        "owner": {
-          "@cls": "person",
-          "id": "social.user.1.109.3",
-          "name": "janet",
-          "display_name": "Janet JANET",
-          "first_name": "Janet",
-          "last_name": "JANET"
-        },
-        "comments": [
-          {
-            "@cls": "comment",
-            "id": "social.comment.1.13.102",
-            "name": "comment_002",
-            "icons": [
-              {
-                "type": "icon",
-                "value": "\/images\/Comment.gif"
-              },
-              {
-                "type": "photo",
-                "value": "\/images\/Comment-large.gif"
-              }
-            ],
-            "content": "comment_002",
-            "target": {
-              "@cls": "status",
-              "id": "social.status.1.110.1",
-              "name": "status post",
-              "icons": [
-                {
-                  "type": "icon",
-                  "value": "\/images\/Status.gif"
-                },
-                {
-                  "type": "photo",
-                  "value": "\/images\/Status-large.gif"
-                }
-              ],
-              "content": "Welcome to TempoSocial 8.5!",
-              "subject": "status post",
-              "created_date": 1392073361390,
-              "modified_date": 1406927736400,
-              "write_activity": {
-                "daily_count": 0,
-                "weekly_count": 0,
-                "monthly_count": 2,
-                "total_count": 2,
-                "reset_date": 1406927820467
-              },
-              "is_owner": false,
-              "is_under_moderation": false,
-              "is_subscribed": false
-            },
-            "context": {
-              "@cls": "status",
-              "id": "social.status.1.110.1",
-              "name": "status post",
-              "icons": [
-                {
-                  "type": "icon",
-                  "value": "\/images\/Status.gif"
-                },
-                {
-                  "type": "photo",
-                  "value": "\/images\/Status-large.gif"
-                }
-              ],
-              "content": "Welcome to TempoSocial 8.5!"
-            },
-            "created_date": 1406927736398,
-            "created_by": {
-              "@cls": "person",
-              "id": "social.user.1.109.301",
-              "name": "otag",
-              "icons": [
-                {
-                  "type": "icon",
-                  "value": "\/images\/UserProfile.gif"
-                },
-                {
-                  "type": "photo",
-                  "value": "\/images\/UserProfile-large.gif"
-                }
-              ],
-              "emails": [
-                {
-                  "type": "main",
-                  "value": "otag@otag",
-                  "primary": true
-                }
-              ],
-              "display_name": "nullN\/A",
-              "last_name": "N\/A"
-            }
-          },
-          {
-            "@cls": "comment",
-            "id": "social.comment.1.13.101",
-            "name": "comment_001",
-            "icons": [
-              {
-                "type": "icon",
-                "value": "\/images\/Comment.gif"
-              },
-              {
-                "type": "photo",
-                "value": "\/images\/Comment-large.gif"
-              }
-            ],
-            "content": "comment_001",
-            "target": {
-              "@cls": "status",
-              "id": "social.status.1.110.1",
-              "name": "status post",
-              "icons": [
-                {
-                  "type": "icon",
-                  "value": "\/images\/Status.gif"
-                },
-                {
-                  "type": "photo",
-                  "value": "\/images\/Status-large.gif"
-                }
-              ],
-              "content": "Welcome to TempoSocial 8.5!",
-              "subject": "status post",
-              "created_date": 1392073361390,
-              "modified_date": 1406927736400,
-              "write_activity": {
-                "daily_count": 0,
-                "weekly_count": 0,
-                "monthly_count": 2,
-                "total_count": 2,
-                "reset_date": 1406927820467
-              },
-              "is_owner": false,
-              "is_under_moderation": false,
-              "is_subscribed": false
-            },
-            "context": {
-              "@cls": "status",
-              "id": "social.status.1.110.1",
-              "name": "status post",
-              "icons": [
-                {
-                  "type": "icon",
-                  "value": "\/images\/Status.gif"
-                },
-                {
-                  "type": "photo",
-                  "value": "\/images\/Status-large.gif"
-                }
-              ],
-              "content": "Welcome to TempoSocial 8.5!"
-            },
-            "created_date": 1406927719920,
-            "created_by": {
-              "@cls": "person",
-              "id": "social.user.1.109.301",
-              "name": "otag",
-              "icons": [
-                {
-                  "type": "icon",
-                  "value": "\/images\/UserProfile.gif"
-                },
-                {
-                  "type": "photo",
-                  "value": "\/images\/UserProfile-large.gif"
-                }
-              ],
-              "emails": [
-                {
-                  "type": "main",
-                  "value": "otag@otag",
-                  "primary": true
-                }
-              ],
-              "display_name": "nullN\/A",
-              "last_name": "N\/A"
-            }
-          }
-        ],
-        "content": "Welcome to TempoSocial 8.5!",
-        "created_by": {
-          "@cls": "person",
-          "id": "social.user.1.109.3",
-          "name": "janet",
-          "display_name": "Janet JANET",
-          "first_name": "Janet",
-          "last_name": "JANET"
-        }
-      },
-      "record": "actId=1392073361568_100891910_1901708246;actType=post.Status;actDate=1392073361568;userId=janet;domainId=default_domain;authRealm=otag;scopeId=1.104.105;groupId=null;objId=1.110.1;contextId=janet;weight=5",
-      "target": {
-        "@cls": "person",
-        "id": "social.user.1.109.3",
-        "name": "janet",
-        "owner": {
-          "@cls": "person",
-          "id": "social.user.1.109.3",
-          "name": "janet",
-          "display_name": "Janet JANET",
-          "first_name": "Janet",
-          "last_name": "JANET"
-        },
-        "display_name": "Janet JANET",
-        "created_by": {
-          "@cls": "person",
-          "id": "social.user.1.109.3",
-          "name": "janet",
-          "display_name": "Janet JANET",
-          "first_name": "Janet",
-          "last_name": "JANET"
-        },
-        "first_name": "Janet",
-        "last_name": "JANET"
-      },
-      "priority": 5,
-      "published": 1392073361568,
       "site": {
         "@cls": "site",
         "id": "social.site.1.104.105",
