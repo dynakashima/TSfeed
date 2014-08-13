@@ -40,10 +40,9 @@ window.BackboneApp = {
 		var createViews = function(data) {
 			var model = createActivitiesCollection(data);
 			var view = createPostsView(model, "#feed-container");
-			// view.listenTo(model, 'createActivity', view.render);
 			return view.render();
 		};
-		var getCurrentUser = function(userid) {
+		var getUser = function(userid) {
 			var deferred = Q.defer();
 			$.ajax({
 		    url:'/otts/xapi/v2/resources/' + userid + '?method=get',
@@ -73,7 +72,7 @@ window.BackboneApp = {
 		  return deferred.promise;
 		};
 		
-		getCurrentUser("@me")
+		getUser("@me")
 			.then(function(User){
 				Storage.saveUser(User);
 				return getSiteFeed();

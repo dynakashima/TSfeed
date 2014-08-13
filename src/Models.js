@@ -40,23 +40,21 @@
 			});
 			return d.promise;
 		},
-		deleteDN: function() {
-			var d = Q.defer();
-			var that = this;
+		deleteDN: function(succ) {
+			var self = this;
 			$.ajax({
-				url: '/otts/xapi/v2/resources/' + that.get('id'),
+				url: '/otts/xapi/v2/resources/' + self.get('id'),
 				type: 'DELETE',
 				contentType: 'application/json',
-				success: function(data) {
-					d.resolve(data);
+				success: function(response) {
+					self.collection.remove(self);
 				},
 				error: function() {
-					d.reject(new Error("Unable to delete status"));
+					throw new Error("Unable to delete status");
 				}
 			});
-			return d.promise;
 		},
-	});https://github.com/thomasdavis/backbonetutorials.git
+	});
 	BackboneApp.Models.ImagePost = Backbone.Model.extend({
 		defaults: {
 			id: null,

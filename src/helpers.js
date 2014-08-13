@@ -9,7 +9,11 @@ if (!String.prototype.format) {
     });
   };
 }
-
+if (!String.prototype.isEmpty) {
+	String.prototype.isEmpty = function() {
+	    return (this.length === 0 || !this.trim());
+	};
+}
 var HELPERS = {
 	AMPMconverter: function(hour24) {
 		if (hour24==0) {

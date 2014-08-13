@@ -28,29 +28,51 @@
       var current = Storage.get('currentUser').id;
       return current === creator;
     },
-
     onRender: function() {
-      // remove delete function if not loggedIn
       if( !this.creatorLoggedIn() ) {
-        this.$el.find('.delete-activity').remove();
+        this.$('.delete-activity').remove();
+      }
+    },
+    events: {
+      "click a.show-comment": "showNewComment",
+      "click a.delete-activity": "deleteDN",
+    },
+    // gets called by collection above
+    remove: function() {
+      this.$el.remove();
+    },
+    deleteDN: function() {
+      var self = this;
+      this.model.deleteDN();
+    },
+    showNewComment: function()  {
+      this.$(".show-comment-view").toggle();
+    },
+
+    addComment: function(event) {
+      var ENTER_KEY = 13;
+      var $input = this.$("#create-post-input");
+      var content = $input.val();
+
+      if ( event.keyCode===ENTER_KEY  && !content.isEmpty() ) {
+        $input.val('');   // emptyinputs
+
+        var activitymodel = new BackboneApp.Models.Activity({
+          createdBy: Storage.get('currentUser'),
+          content: content,
+          comments: new BackboneApp.Collections.Comments([])
+        });
+
+        var self = this;
+        activitymodel.saveDN().then(function(response) {
+          self.collection.add(activitymodel, {at:0});
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
       }
     },
 
-    events: {
-      "click a.show-comment": "showComment",
-      "click a.delete-activity": "destroy",
-    },
-    destroy: function() {
-      var that = this;
-      this.model.deleteDN().then(function(response) {
-        // that.model.destroy();
-        console.log("here i am")
-        // window.location.reload();
-      });
-    },
-    showComment: function()  {
-      this.$el.find(".show-comment-view").toggle();
-    }
 	});
 
   BackboneApp.CollectionViews.FeedView = Backbone.Marionette.CompositeView.extend({
@@ -64,13 +86,10 @@
     createActivity: function(event) {
       var ENTER_KEY = 13;
       var $input = this.$el.find("#create-post-input");
-      var content = $input.val().trim();
+      var content = $input.val();
 
-      if(event.keyCode === ENTER_KEY  && content) {
-        
+      if ( event.keyCode===ENTER_KEY  && !content.isEmpty() ) {
         $input.val('');   // emptyinputs
-
-        var that = this;
 
         var activitymodel = new BackboneApp.Models.Activity({
           createdBy: Storage.get('currentUser'),
@@ -78,8 +97,9 @@
           comments: new BackboneApp.Collections.Comments([])
         });
 
+        var self = this;
         activitymodel.saveDN().then(function(response) {
-          that.collection.add(activitymodel, {at:0});
+          self.collection.add(activitymodel, {at:0});
         })
         .catch(function(error) {
           console.log(error);

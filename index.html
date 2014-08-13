@@ -70,7 +70,6 @@
         <span class="feed-date pull-right"><%= createdAt %></span>
       </h4>
       <%= content %>
-      <!-- OPTIONAL COMMENTS -->
       <table class="table">
         <tr>
           <td>
@@ -81,7 +80,11 @@
           </td>
         </tr>
       </table>
-      <span class="show-comment-view">HERE I AM</span>
+      
+      <!-- CREATE COMMENT VIEW -->
+      <input type="text" class="form-control show-comment-view" placeholder="I think that...">   
+      
+      <!-- ALL COMMENTS VIEW -->
       <div class="activity-comments-container"></div>
     </div>
     </div>
