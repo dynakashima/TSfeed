@@ -54,6 +54,37 @@
 				}
 			});
 		},
+		addCommentDN: function(commentContent) {
+			var self = this,
+				addComUrl = '/otts/xapi/v2/resources/{0}/comments'.format(self.get('id')),
+				postBody = {
+					"@cls": "comment",
+					"content": commentContent
+				};
+			
+			var onSuccess = function(response) {
+        var commentModel = new BackboneApp.Models.Comment({
+          createdBy: Storage.get('currentUser'),
+          content: commentContent,
+          createdAt: new Date(),
+					id: response.id
+        });
+				self.get('comments').add(commentModel);
+			}
+
+
+			$.ajax({
+				url: addComUrl,
+				type: 'POST',
+				data: JSON.stringify(postBody),
+				contentType: 'application/json',
+				success: onSuccess,
+				error: function() {
+					throw new Error("Unable to delete status");
+				}
+			});
+			return true;
+		}
 	});
 	BackboneApp.Models.ImagePost = Backbone.Model.extend({
 		defaults: {
@@ -73,6 +104,9 @@
 	});
 
 	BackboneApp.Models.Comment = Backbone.Model.extend({
+		urlRoot: "otts/xapi/v2/resources/",
+		dataType:"json",
+
 		defaults: {
 			id: null,
 			createdBy: {
@@ -82,7 +116,39 @@
 			},
 			createdAt: null,
 			content: null
-		}
+		},
+		destroy: function(options) {
+			var success = options.success;
+			var self = this;
+			$.ajax({
+				url: '/otts/xapi/v2/resources/' + self.get('id'),
+				type: 'DELETE',
+				contentType: 'application/json',
+				success: function(response) {
+					self.collection.remove(self);
+					success(self, response);
+				},
+				error: function() {
+					throw new Error("Unable to delete status");
+				}
+			});
+		},
+
+		deleteComment: function() {
+			var self = this;
+			$.ajax({
+				url: '/otts/xapi/v2/resources/' + self.get('id'),
+				type: 'DELETE',
+				contentType: 'application/json',
+				success: function(response) {
+					self.collection.remove(self);
+				},
+				error: function() {
+					throw new Error("Unable to delete status");
+				}
+			});
+		},
+
 	});
 		// 	// MODELS
 		// BackboneApp.Models.User = Backbone.Model.extend({urlRoot: '/otts/xapi/v2/resources/'});

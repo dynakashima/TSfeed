@@ -20,7 +20,6 @@
   <!-- FOR TESTING -->
   <script src="example_feed.js"></script>
 
-
   <!-- STYLESHEETS  -->
   <link rel="stylesheet" type="text/css" href="styles/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="styles/bootstrap-theme.min.css">
@@ -28,18 +27,14 @@
 </head>
 
 <body>
-  
-<!-- BODY -->
+<div class="container site-container">
 
-  <div class="container site-container">
-
-    <div id="feed-container">
-      <input id="create-post-input" type="text" class="form-control" placeholder="I want to announce..." required><br />
-
-      <div id="activity-list"></div>
-    </div>
-    
+  <div id="feed-container">
+    <input id="create-post-input" type="text" class="form-control" placeholder="I want to announce..." required><br />
+    <div id="activity-list"></div>
   </div>
+
+</div>
 </body>
 
 
@@ -54,6 +49,7 @@
         <span class="feed-date pull-right"><%= createdAt %></span>
       </h4>
       <%= content %>
+      <a class="delete-comment pull-right" href="javascript:void(0)">Delete</a>
     </div>
   </div>
 </script>
@@ -70,19 +66,17 @@
         <span class="feed-date pull-right"><%= createdAt %></span>
       </h4>
       <%= content %>
-      <table class="table">
-        <tr>
-          <td>
-            <a class="show-comment" href="javascript:void(0)">Comment</a>
-          </td>
-          <td class="delete-activity">
-            <a class="delete-activity" href="javascript:void(0)">Delete</a>
-          </td>
-        </tr>
-      </table>
+      <div class="row">
+        <div class="col-sm-6">
+          <a class="show-comment" href="javascript:void(0)">Comment</a>
+        </div>
+        <div class="col-sm-6">
+          <a class="delete-activity" href="javascript:void(0)">Delete</a>
+        </div>
+      </div>
       
       <!-- CREATE COMMENT VIEW -->
-      <input type="text" class="form-control show-comment-view" placeholder="I think that...">   
+      <input type="text" class="form-control create-comment-input" placeholder="I think that...">   
       
       <!-- ALL COMMENTS VIEW -->
       <div class="activity-comments-container"></div>

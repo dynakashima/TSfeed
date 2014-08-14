@@ -1,11 +1,7 @@
 .row {
-  /*border: 1px black dotted;*/
   padding-top: 20px;
   margin-top: 5px;
   margin-bottom: 5px;
-}
-body {
-  background-color: white;
 }
 .site-container {
   margin-top: 20px;
@@ -13,7 +9,7 @@ body {
 #feed-container {
   padding: 50px;
   border: 1px darkgray solid;
-  background-color: CornflowerBlue;
+  background-color: steelblue;
 }
 .media {
   border: 1px gray dotted;
@@ -21,19 +17,12 @@ body {
 }
 .feed-date {
   color: gray;
-  font-size: .75em;
+  font-size: .60em;
 }
 #feed-container  * {
   background-color: white;
 }
-.show-comment-view {
+.create-comment-input {
   display: none;
-}
-a:link {
-    color: hsl(36,50%,50%);
-    transition: 1s;
-}
-a:hover {
-    color: hsl(36,100%,50%);
-    opacity: .5;
+  margin-bottom: 15px;
 }
